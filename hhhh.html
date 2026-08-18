@@ -1,0 +1,3061 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>علملوجيا | منهج الصف الثاني الثانوي الأزهري</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+    --purple-dark:#4B0081;
+    --purple:#8A4DFF;
+    --light:#E6E6F9;
+    --black:#0D0D14;
+    --white:#FFFFFF;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Cairo",sans-serif;
+    background:
+        radial-gradient(circle at 50% 0%,rgba(138,77,255,.18),transparent 35%),
+        var(--black);
+    color:var(--white);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* =========================
+   الخلفية
+========================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.star{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:var(--purple);
+    border-radius:50%;
+    box-shadow:0 0 12px var(--purple);
+    animation:floatStar linear infinite;
+    opacity:.8;
+}
+
+.shape{
+    position:absolute;
+    border:2px solid var(--purple);
+    box-shadow:0 0 15px rgba(138,77,255,.7);
+    opacity:.45;
+    animation:floating 8s ease-in-out infinite;
+}
+
+.circle{
+    border-radius:50%;
+}
+
+.square{
+    transform:rotate(25deg);
+}
+
+@keyframes floating{
+    0%,100%{
+        transform:translateY(0) rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(-35px) rotate(180deg);
+    }
+}
+
+@keyframes floatStar{
+    from{
+        transform:translateY(100vh);
+    }
+
+    to{
+        transform:translateY(-100px);
+    }
+}
+
+/* =========================
+   الصفحة
+========================= */
+
+.container{
+    width:min(1100px,94%);
+    margin:auto;
+    padding:25px 0 50px;
+}
+
+/* =========================
+   الهيدر
+========================= */
+
+header{
+    text-align:center;
+    padding:20px 10px 30px;
+}
+
+.logo{
+    font-size:clamp(48px,12vw,105px);
+    font-weight:900;
+    color:var(--white);
+
+    text-shadow:
+        0 0 5px var(--purple),
+        0 0 15px var(--purple),
+        0 0 35px var(--purple),
+        0 0 70px var(--purple);
+
+    animation:neon 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon{
+
+    from{
+        text-shadow:
+            0 0 5px var(--purple),
+            0 0 15px var(--purple),
+            0 0 30px var(--purple);
+    }
+
+    to{
+        text-shadow:
+            0 0 10px var(--purple),
+            0 0 25px var(--purple),
+            0 0 55px var(--purple),
+            0 0 90px var(--purple);
+    }
+}
+
+.subtitle{
+    color:var(--light);
+    font-size:clamp(15px,3vw,23px);
+    margin-top:5px;
+}
+
+.section-type{
+    color:var(--purple);
+    font-weight:800;
+    font-size:clamp(17px,4vw,26px);
+    margin-top:8px;
+    text-shadow:0 0 15px var(--purple);
+}
+
+/* =========================
+   اختيار القسم
+========================= */
+
+.branch-box{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin:10px 0 30px;
+    flex-wrap:wrap;
+}
+
+.branch-btn{
+    border:1px solid var(--purple);
+    background:rgba(75,0,129,.25);
+    color:var(--white);
+    padding:11px 25px;
+    border-radius:14px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:16px;
+    transition:.3s;
+}
+
+.branch-btn:hover,
+.branch-btn.active{
+    background:var(--purple);
+    box-shadow:0 0 25px var(--purple);
+    transform:translateY(-2px);
+}
+
+/* =========================
+   المواد
+========================= */
+
+.subject{
+    border:1px solid var(--purple);
+    border-radius:20px;
+    margin-bottom:15px;
+    background:rgba(13,13,20,.86);
+
+    box-shadow:
+        0 0 8px rgba(138,77,255,.25),
+        inset 0 0 20px rgba(75,0,129,.08);
+
+    overflow:hidden;
+    transition:.3s;
+}
+
+.subject:hover{
+    box-shadow:
+        0 0 18px rgba(138,77,255,.55),
+        inset 0 0 25px rgba(75,0,129,.12);
+}
+
+.subject-title{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:var(--white);
+
+    padding:18px 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    font-family:inherit;
+    font-size:20px;
+    font-weight:800;
+
+    cursor:pointer;
+    text-align:right;
+}
+
+.subject-title:hover{
+    color:var(--light);
+}
+
+.subject-number{
+    min-width:45px;
+    height:45px;
+
+    border:1px solid var(--purple);
+    border-radius:12px;
+
+    display:grid;
+    place-items:center;
+
+    color:var(--light);
+
+    box-shadow:0 0 12px rgba(138,77,255,.35);
+}
+
+.title-right{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.arrow{
+    font-size:22px;
+    color:var(--purple);
+    transition:.3s;
+}
+
+.subject.open .arrow{
+    transform:rotate(180deg);
+}
+
+/* =========================
+   الدروس
+========================= */
+
+.lessons{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .5s ease;
+}
+
+.lessons-inner{
+    padding:0 20px 20px;
+}
+
+.lesson{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+
+    padding:11px 12px;
+    margin-top:7px;
+
+    background:rgba(75,0,129,.13);
+
+    border-right:3px solid var(--purple);
+    border-radius:10px;
+
+    color:var(--light);
+
+    line-height:1.8;
+}
+
+.lesson::before{
+    content:"◆";
+    color:var(--purple);
+    text-shadow:0 0 8px var(--purple);
+    flex-shrink:0;
+}
+
+/* =========================
+   غير المقرر
+========================= */
+
+.lesson.cancelled{
+    border-right-color:#555;
+    background:rgba(80,80,90,.06);
+    color:#777;
+    text-decoration:line-through;
+    text-decoration-thickness:2px;
+    box-shadow:none;
+}
+
+.lesson.cancelled::before{
+    content:"✕";
+    color:#777;
+    text-shadow:none;
+}
+
+.lesson.cancelled small{
+    color:#666;
+}
+
+/* =========================
+   ملاحظات
+========================= */
+
+.note{
+    margin-top:12px;
+    padding:13px;
+
+    border-radius:10px;
+
+    background:rgba(138,77,255,.08);
+    border:1px dashed rgba(138,77,255,.7);
+
+    color:#ddd;
+
+    font-size:14px;
+    line-height:1.9;
+}
+
+.note strong{
+    color:var(--purple);
+}
+
+/* =========================
+   عناوين الوحدات
+========================= */
+
+.unit-title{
+    margin-top:15px;
+    padding:13px 15px;
+
+    border-radius:12px;
+
+    background:rgba(138,77,255,.10);
+    border:1px solid rgba(138,77,255,.45);
+
+    color:#fff;
+
+    font-weight:800;
+    line-height:1.8;
+
+    box-shadow:0 0 12px rgba(138,77,255,.12);
+}
+
+/* =========================
+   رسالة البداية
+========================= */
+
+.welcome{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.84);
+    backdrop-filter:blur(10px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:9999;
+
+    transition:opacity .4s ease;
+}
+
+.welcome-card{
+    width:min(430px,95%);
+
+    max-height:92vh;
+    overflow-y:auto;
+
+    background:
+        radial-gradient(circle at top,
+        rgba(138,77,255,.18),
+        transparent 45%),
+        #0D0D14;
+
+    border:1px solid var(--purple);
+    border-radius:28px;
+
+    padding:28px 25px;
+
+    text-align:center;
+
+    box-shadow:
+        0 0 20px rgba(138,77,255,.5),
+        0 0 70px rgba(75,0,129,.45);
+
+    animation:modalIn .6s ease;
+}
+
+@keyframes modalIn{
+
+    from{
+        opacity:0;
+        transform:scale(.8) translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+/* =========================
+   صورة رسالة البداية
+========================= */
+
+.welcome-logo{
+    width:125px;
+    height:125px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:3px solid var(--purple);
+
+    box-shadow:
+        0 0 15px var(--purple),
+        0 0 35px rgba(138,77,255,.7);
+
+    margin:0 auto 15px;
+
+    display:block;
+}
+
+/* =========================
+   محتوى الرسالة
+========================= */
+
+.welcome-icon{
+    font-size:35px;
+    color:var(--purple);
+
+    text-shadow:0 0 25px var(--purple);
+
+    margin-bottom:5px;
+}
+
+.welcome-card h2{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.welcome-card p{
+    color:var(--light);
+    line-height:2;
+    font-size:16px;
+}
+
+/* =========================
+   الاشتراك
+========================= */
+
+.subscribe-box{
+    margin-top:22px;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    background:rgba(138,77,255,.06);
+
+    border:1px dashed rgba(138,77,255,.7);
+
+    box-shadow:
+        inset 0 0 15px rgba(138,77,255,.05);
+}
+
+.subscribe-title{
+    color:var(--purple);
+
+    font-size:17px;
+    font-weight:800;
+
+    line-height:1.8;
+
+    text-shadow:0 0 12px var(--purple);
+}
+
+.subscribe-text{
+    color:#ddd;
+
+    font-size:13px;
+
+    margin-top:5px;
+}
+
+.channel-link{
+    display:block;
+
+    margin-top:12px;
+
+    padding:11px 8px;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple-dark),
+            var(--purple)
+        );
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:800;
+
+    box-shadow:
+        0 0 15px rgba(138,77,255,.5);
+
+    transition:.3s;
+
+    direction:ltr;
+}
+
+.channel-link:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 25px rgba(138,77,255,.9);
+}
+
+/* =========================
+   زر البداية
+========================= */
+
+.start-btn{
+    margin-top:20px;
+    width:100%;
+
+    border:0;
+    padding:14px;
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple-dark),
+            var(--purple)
+        );
+
+    color:white;
+
+    font-family:inherit;
+    font-size:19px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:0 0 20px rgba(138,77,255,.6);
+
+    transition:.3s;
+}
+
+.start-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 35px rgba(138,77,255,.9);
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer{
+    margin-top:35px;
+    padding:25px;
+
+    border:1px solid var(--purple);
+    border-radius:20px;
+
+    background:rgba(13,13,20,.85);
+
+    text-align:center;
+
+    box-shadow:0 0 20px rgba(138,77,255,.2);
+}
+
+.designer{
+    color:var(--light);
+    margin-bottom:8px;
+}
+
+.designer strong{
+    color:var(--purple);
+    text-shadow:0 0 12px var(--purple);
+}
+
+.copyright{
+    color:#ddd;
+    line-height:1.9;
+}
+
+footer a{
+    color:var(--purple);
+    text-decoration:none;
+    font-weight:700;
+}
+
+footer a:hover{
+    text-shadow:0 0 12px var(--purple);
+}
+
+.hidden{
+    display:none;
+}
+
+/* =========================
+   موبايل
+========================= */
+
+@media(max-width:600px){
+
+    .container{
+        width:94%;
+        padding-top:15px;
+    }
+
+    .logo{
+        font-size:55px;
+    }
+
+    .subject-title{
+        font-size:17px;
+        padding:15px;
+    }
+
+    .subject-number{
+        min-width:40px;
+        height:40px;
+    }
+
+    .lesson{
+        font-size:14px;
+    }
+
+    .note{
+        font-size:13px;
+    }
+
+    .welcome-logo{
+        width:105px;
+        height:105px;
+    }
+
+    .welcome-card{
+        padding:25px 18px;
+    }
+
+    .channel-link{
+        font-size:12px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     الخلفية المتحركة
+========================= -->
+
+<div class="background" id="background"></div>
+
+
+<!-- =========================
+     رسالة البداية
+========================= -->
+
+<div class="welcome" id="welcome">
+
+    <div class="welcome-card">
+
+        <!-- ضع الصورة باسم logo.png بجانب ملف index.html -->
+
+        <img
+            src="logo.png"
+            alt="شعار علملوجيا"
+            class="welcome-logo"
+        >
+
+        <div class="welcome-icon">♡</div>
+
+        <h2>قبل أن نبدأ</h2>
+
+        <p>
+            اللهم صلِّ على سيدنا محمد ﷺ
+            <br>
+            واذكر الله 🤍
+            <br><br>
+            أسأل الله أن يوفقنا وإياكم
+            <br>
+            لما يحب ويرضى.
+        </p>
+
+        <!-- =========================
+             الاشتراك في القناة
+        ========================= -->
+
+        <div class="subscribe-box">
+
+            <div class="subscribe-title">
+                📢 لا تنسَ الاشتراك في قناة علملوجيا
+            </div>
+
+            <div class="subscribe-text">
+                ليصلك كل جديد ومفيد بإذن الله 🤍
+            </div>
+
+            <a
+                class="channel-link"
+                href="https://t.me/elmologia"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                https://t.me/elmologia
+            </a>
+
+        </div>
+
+        <button class="start-btn" onclick="startWebsite()">
+            تم ✓
+        </button>
+
+    </div>
+
+</div>
+
+
+<main class="container">
+
+<header>
+
+    <div class="logo">
+        علملوجيا
+    </div>
+
+    <div class="subtitle">
+        منهج الصف الثاني الثانوي الأزهري - الترم الأول
+    </div>
+
+    <div class="section-type">
+        القسم العلمي والأدبي
+    </div>
+
+</header>
+
+
+<!-- =========================
+     اختيار القسم
+========================= -->
+
+<div class="branch-box">
+
+    <button
+        class="branch-btn active"
+        onclick="showBranch('scientific',this)">
+        القسم العلمي
+    </button>
+
+    <button
+        class="branch-btn"
+        onclick="showBranch('literary',this)">
+        القسم الأدبي
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     القسم العلمي
+========================================================= -->
+
+<section id="scientific">
+
+
+<!-- =========================
+     01 الفقه الشافعي
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">01</span>
+الفقه الشافعي
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+كتاب الصيام
+</div>
+
+<div class="lesson cancelled">
+فصل في الاعتكاف
+</div>
+
+<div class="lesson">
+كتاب الحج والعمرة
+</div>
+
+<div class="note">
+<strong>📌 المقرر:</strong>
+من بداية الكتاب حتى سنن الطواف فقط،
+أما من واجبات السعي إلى نهاية الدرس فغير مقرر.
+</div>
+
+<div class="lesson cancelled">
+فصل في محرمات الإحرام
+</div>
+
+<div class="lesson cancelled">
+فصل في الدماء الواجبة
+</div>
+
+<div class="lesson">
+كتاب البيع
+</div>
+
+<div class="lesson">
+فصل في الربا
+</div>
+
+<div class="lesson">
+أحكام الخيار
+</div>
+
+<div class="lesson">
+السَّلَم
+</div>
+
+<div class="lesson">
+الرهن
+</div>
+
+<div class="lesson">
+الضمان
+</div>
+
+<div class="lesson">
+الشركة
+</div>
+
+<div class="lesson">
+الوكالة
+</div>
+
+<div class="lesson">
+الغصب
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     02 الفقه الحنفي
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">02</span>
+الفقه الحنفي
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+كتاب البيوع
+</div>
+
+<div class="lesson">
+باب الإقالة
+</div>
+
+<div class="lesson">
+باب الخيارات
+</div>
+
+<div class="lesson">
+باب البيع الفاسد
+</div>
+
+<div class="lesson">
+باب التولية والمرابحة والوضيعة
+</div>
+
+<div class="lesson">
+باب الربا
+</div>
+
+<div class="lesson">
+باب السلم
+</div>
+
+<div class="lesson">
+باب الصرف
+</div>
+
+<div class="lesson">
+كتاب الإجارة
+</div>
+
+<div class="note">
+<strong>📌 ملحوظة:</strong>
+كتاب الإجارة مقرر بالكامل.
+</div>
+
+<div class="lesson cancelled">
+كتاب الرهن
+</div>
+
+<div class="lesson">
+كتاب آداب القاضي
+</div>
+
+<div class="note">
+<strong>📌 المقرر:</strong>
+من بداية كتاب آداب القاضي إلى حكم حبس الوالد في دين ولده فقط،
+أما من فصل في التحكيم إلى نهاية الكتاب فغير مقرر.
+</div>
+
+<div class="lesson cancelled">
+فصل في التحكيم
+</div>
+
+<div class="lesson cancelled">
+كتاب الإكراه
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     03 الفقه المالكي
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">03</span>
+الفقه المالكي
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+باب البيوع.
+</div>
+
+<div class="lesson">
+بيع الجزاف.
+</div>
+
+<div class="lesson">
+باب الربا كاملًا.
+</div>
+
+<div class="lesson cancelled">
+الفضل وما يتعلق بذلك.
+</div>
+
+<div class="lesson cancelled">
+فصل في الخيار.
+</div>
+
+<div class="lesson cancelled">
+فصل: حكم بيع المرابحة وبيان حقيقتها.
+</div>
+
+<div class="lesson">
+فصل في السلم.
+</div>
+
+<div class="lesson">
+فصل في القرض.
+</div>
+
+<div class="lesson">
+فصل في الرهن.
+</div>
+
+<div class="lesson">
+أحكام الصلح.
+</div>
+
+<div class="lesson">
+الحوالة وأحكامها.
+</div>
+
+<div class="lesson">
+الضمان وأحكامه.
+</div>
+
+<div class="lesson">
+الشركة وأحكامها.
+</div>
+
+<div class="lesson">
+المزارعة وأحكامها.
+</div>
+
+<div class="lesson cancelled">
+الوكالة وأحكامها.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     04 التفسير
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">04</span>
+التفسير
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="note">
+<strong>📘 المقرر: 3 سور فقط</strong>
+</div>
+
+<div class="lesson">
+سورة تبارك
+</div>
+
+<div class="lesson">
+سورة القلم
+</div>
+
+<div class="lesson">
+سورة الحاقة
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     05 الحديث
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">05</span>
+الحديث
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="note">
+<strong>📖 عدد الأحاديث المقررة: 11 حديثًا.</strong>
+</div>
+
+<div class="lesson">
+الحديث الأول: سعة فضل الله تعالى.
+</div>
+
+<div class="lesson">
+الحديث الثاني: مأمورات ومنهيات نبوية.
+</div>
+
+<div class="lesson">
+الحديث الثالث: تحريم هجر المسلم.
+</div>
+
+<div class="lesson">
+الحديث الرابع: الأنبياء إخوة لِعَلَّات.
+</div>
+
+<div class="lesson">
+الحديث الخامس: الرؤيا الصالحة.
+</div>
+
+<div class="lesson">
+الحديث السادس: إثم من قتل معاهداً.
+</div>
+
+<div class="lesson">
+الحديث السابع: الصدقة من الكسب الحلال الطيب.
+</div>
+
+<div class="lesson">
+الحديث الثامن: التحري في كسب اللقمة الحلال.
+</div>
+
+<div class="lesson">
+الحديث التاسع: فضل الصحابة رضي الله عنهم.
+</div>
+
+<div class="lesson">
+الحديث العاشر: المنافسة في فعل الخير.
+</div>
+
+<div class="lesson">
+الحديث الحادي عشر: أجر الساعي على الأرملة والمسكين.
+</div>
+
+<div class="note">
+<strong>📌 الحفظ:</strong>
+الأحاديث (1، 5، 8، 10).
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     06 التوحيد
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">06</span>
+التوحيد
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="note">
+📌 تنبيه مهم:
+مادة التوحيد والفرق الإسلامية تنقسم إلى قسمين داخل الكتاب:
+<br>
+🔹 التوحيد.
+<br>
+🔹 الفرق الإسلامية.
+</div>
+
+<div class="lesson">
+خلق أفعال العباد
+</div>
+
+<div class="lesson">
+التوفيق والخذلان
+</div>
+
+<div class="lesson">
+الوعد والوعيد
+</div>
+
+<div class="lesson">
+السعادة والشقاوة
+</div>
+
+<div class="lesson cancelled">
+الصلاح والأصلح
+</div>
+
+<div class="lesson cancelled">
+القضاء والقدر
+</div>
+
+<div class="lesson">
+رؤية الله تعالى
+</div>
+
+<div class="lesson">
+قسم النبوات
+</div>
+
+<div class="note">
+<strong>📌 المقرر:</strong>
+إلى الفرق بين النبي والرسول فقط،
+أما من حكم إرسال الرسل إلى نهاية الدرس فغير مقرر.
+</div>
+
+<div class="lesson">
+ما يجب وما يستحيل في حق الرسل: الأمانة
+</div>
+
+<div class="note">
+<strong>📌 الدرس مقرر بالكامل.</strong>
+</div>
+
+<!-- الملحوظة المضافة من الأدبي -->
+
+<div class="note">
+📝 <strong>ملحوظة:</strong>
+الصدق، والفطانة، والكذب، والخيانة، وبقية الواجبات والمستحيلات
+في حق الرسل ستكون ضمن مقرر الترم الثاني إن شاء الله.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     07 الفرق الإسلامية
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">07</span>
+الفرق الإسلامية
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+نشأة الفرق الإسلامية
+</div>
+
+<div class="lesson">
+المعتزلة
+</div>
+
+<div class="note">
+<strong>📌 الدرس مقرر بالكامل.</strong>
+</div>
+
+<div class="lesson">
+أهل السنة والجماعة
+</div>
+
+<div class="lesson">
+أبو الحسن الأشعري
+</div>
+
+<div class="lesson">
+أبو منصور الماتريدي
+</div>
+
+<div class="lesson">
+الخوارج
+</div>
+
+<div class="lesson cancelled">
+الإباضية
+</div>
+
+<div class="lesson cancelled">
+المرجئة
+</div>
+
+<div class="lesson cancelled">
+الجبرية (الجهمية)
+</div>
+
+<div class="lesson cancelled">
+القدرية الأولى
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     08 النحو
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">08</span>
+النحو
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+باب الفاعل
+</div>
+
+<div class="lesson cancelled">
+باب نائب الفاعل
+</div>
+
+<div class="lesson cancelled">
+باب المفعول المطلق
+</div>
+
+<div class="lesson cancelled">
+باب المفعول له
+</div>
+
+<div class="lesson cancelled">
+باب المفعول فيه
+</div>
+
+<div class="lesson cancelled">
+باب المفعول معه
+</div>
+
+<div class="lesson">
+باب الاستثناء
+</div>
+
+<div class="lesson">
+باب الحال
+</div>
+
+<div class="note">
+<strong>📌 ملحوظة:</strong>
+باب الحال مقرر كاملًا، فلا تشغل بالك بالتقسيمات الموجودة داخل الكتاب،
+فهو عليك بالكامل دون حذف أي درس.
+</div>
+
+<div class="lesson cancelled">
+باب التمييز
+</div>
+
+<div class="note">
+😂 <strong>بُشرى سارة... أو يمكن مش سارة أوي!</strong>
+<br><br>
+لو افتكرت إن كلمة "باب" معناها درس واحد صغير...
+الباب في النحو ممكن تلاقيه ٥ أو ٦ دروس،
+وأحيانًا يوصل لـ ١٠ دروس! 😅
+<br><br>
+يعني المنهج مش كبير... ده "عامل عضوية جيم" من كتر ما هو مليان! 💪😂
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     09 الصرف
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">09</span>
+الصرف
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+تقسيم الاسم إلى مجرد ومزيد
+</div>
+
+<div class="lesson">
+أبنية الاسم المجرد
+</div>
+
+<div class="lesson">
+أبنية الاسم الرباعي المجرد
+</div>
+
+<div class="lesson">
+أبنية الاسم الخماسي المجرد
+</div>
+
+<div class="lesson">
+أبنية المزيد من الأسماء
+</div>
+
+<div class="lesson">
+تقسيم الاسم إلى جامد ومشتق
+</div>
+
+<div class="lesson">
+أبنية المصادر
+</div>
+
+<div class="note">
+<strong>📌 أبنية المصادر مقررة بجميع أنواعها:</strong>
+<br>
+🔹 أولًا: مصادر الثلاثي.
+<br>
+🔹 ثانيًا: مصادر الرباعي.
+<br>
+🔹 ثالثًا: مصادر الخماسي.
+<br>
+🔹 رابعًا: مصادر السداسي.
+</div>
+
+<div class="lesson">
+المصدر الميمي
+</div>
+
+<div class="lesson">
+اسم المرة واسم الهيئة
+</div>
+
+<div class="lesson">
+المصدر الصناعي
+</div>
+
+<div class="lesson">
+المشتقات – اسم الفاعل
+</div>
+
+<div class="lesson">
+صيغ المبالغة
+</div>
+
+<div class="lesson">
+اسم المفعول
+</div>
+
+<div class="lesson cancelled">
+الصفة المشبهة
+</div>
+
+<div class="lesson cancelled">
+اسم التفضيل
+</div>
+
+<div class="lesson cancelled">
+اسما الزمان والمكان
+</div>
+
+<div class="lesson cancelled">
+اسم الآلة
+</div>
+
+<div class="note">
+<strong>📌 باختصار:</strong>
+مقرر القسم العلمي يمتد إلى اسم المفعول،
+وما بعده غير مقرر في الترم الأول.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     10 البلاغة
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">10</span>
+البلاغة
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="unit-title">
+الوحدة الأولى: القصر
+</div>
+
+<div class="lesson">
+القصر: تعريفه، وأركانه، وطرقه.
+</div>
+
+<div class="lesson">
+أقسام القصر.
+</div>
+
+<div class="unit-title">
+الوحدة الثانية: الأساليب الإنشائية
+</div>
+
+<div class="lesson">
+الإنشاء: تعريفه، وأساليبه.
+</div>
+
+<div class="lesson">
+التمني.
+</div>
+
+<div class="lesson">
+الاستفهام.
+</div>
+
+<div class="lesson">
+الأمر.
+</div>
+
+<div class="lesson">
+النهي.
+</div>
+
+<div class="lesson">
+النداء.
+</div>
+
+<div class="unit-title">
+❌ الوحدة الثالثة: الفصل والوصل
+</div>
+
+<div class="note">
+الوحدة الثالثة غير مقررة على القسم العلمي.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     11 الأدب
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">11</span>
+الأدب
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+ملامح الحياة في العصر العباسي.
+</div>
+
+<div class="lesson">
+الشعر في العصر العباسي.
+</div>
+
+<div class="note">
+📌 ومقرر عليك أيضًا: أهم خصائص الشعر.
+</div>
+
+<div class="lesson cancelled">
+أهم شعراء العصر العباسي.
+</div>
+
+<div class="lesson">
+النثر في العصر العباسي.
+</div>
+
+<div class="note">
+📌 ومقرر عليك أيضًا: أهم خصائص النثر.
+</div>
+
+<div class="lesson">
+ملامح الحياة في العصر المملوكي.
+</div>
+
+<div class="lesson">
+الشعر في العصر المملوكي.
+</div>
+
+<div class="note">
+📌 ومقرر عليك أيضًا: أهم خصائص الشعر.
+</div>
+
+<div class="lesson cancelled">
+أهم شعراء العصر المملوكي.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     12 النصوص
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">12</span>
+النصوص
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+في الرثاء لأبي تمام.
+</div>
+
+<div class="note">
+📌 النص كله دراسة، ويحفظ منه أول 5 أبيات.
+</div>
+
+<div class="lesson cancelled">
+في الاستعطاف للمتنبي.
+</div>
+
+<div class="lesson">
+خطبة عيد الفطر للخليفة المأمون.
+</div>
+
+<div class="note">
+📌 الخطبة دراسة كلها، وحفظ من أولها إلى قوله:
+"ولا تُحْظَر قبله توبة".
+</div>
+
+<div class="lesson">
+في المديح والحكم لصفي الدين الحلي.
+</div>
+
+<div class="note">
+📌 النص كله دراسة، وحفظ أول 6 أبيات منه.
+</div>
+
+<div class="lesson cancelled">
+من لامية ابن الوردي في الحكم والمواعظ.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     13 المطالعة والإنشاء
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">13</span>
+المطالعة والإنشاء
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="note">
+📌 منهج المطالعة والإنشاء موحد للقسمين العلمي والأدبي.
+</div>
+
+<div class="unit-title">
+أولًا: المطالعة
+</div>
+
+<div class="lesson">
+بلاغة القرآن الكريم.
+</div>
+
+<div class="lesson">
+نصيحة أبي حازم سليمان بن عبد الملك.
+</div>
+
+<div class="lesson">
+أصل اللغة (إلهام أم اصطلاح).
+</div>
+
+<div class="lesson">
+المرأة الكريمة.
+</div>
+
+<div class="lesson">
+البطولة والأبطال.
+</div>
+
+<div class="lesson">
+من الشيوخ إلى الشبان.
+</div>
+
+<div class="unit-title">
+ثانيًا: الإنشاء
+</div>
+
+<div class="lesson">
+الإنشاء.
+</div>
+
+<div class="lesson">
+المناظرة.
+</div>
+
+<div class="lesson">
+فن الخطابة.
+</div>
+
+</div>
+</div>
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     القسم الأدبي
+========================================================= -->
+
+<section id="literary" class="hidden">
+
+
+<!-- =========================
+     01 الفقه الشافعي
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">01</span>
+الفقه الشافعي
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+كتاب الصيام
+</div>
+
+<div class="lesson">
+فصل في الاعتكاف
+</div>
+
+<div class="lesson">
+كتاب الحج والعمرة
+</div>
+
+<div class="lesson">
+فصل في محرمات الإحرام
+</div>
+
+<div class="lesson">
+فصل في الدماء الواجبة
+</div>
+
+<div class="lesson">
+كتاب البيع
+</div>
+
+<div class="lesson">
+فصل في الربا
+</div>
+
+<div class="lesson">
+أحكام الخيار
+</div>
+
+<div class="lesson">
+السَّلَم
+</div>
+
+<div class="lesson">
+الرهن
+</div>
+
+<div class="lesson">
+الضمان
+</div>
+
+<div class="lesson">
+الشركة
+</div>
+
+<div class="lesson cancelled">
+الوكالة
+</div>
+
+<div class="lesson cancelled">
+الغصب
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     02 الفقه الحنفي
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">02</span>
+الفقه الحنفي
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+كتاب البيوع
+</div>
+
+<div class="lesson">
+باب الإقالة
+</div>
+
+<div class="lesson">
+باب الخيارات
+</div>
+
+<div class="lesson">
+باب البيع الفاسد
+</div>
+
+<div class="lesson">
+باب التولية والمرابحة والوضيعة
+</div>
+
+<div class="lesson">
+باب الربا
+</div>
+
+<div class="lesson">
+باب السلم
+</div>
+
+<div class="lesson">
+باب الصرف
+</div>
+
+<div class="lesson">
+كتاب الإجارة
+</div>
+
+<div class="lesson">
+كتاب الرهن
+</div>
+
+<div class="lesson">
+كتاب آداب القاضي
+</div>
+
+<div class="lesson">
+فصل في التحكيم
+</div>
+
+<div class="lesson">
+كتاب الإكراه
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     03 الفقه المالكي
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">03</span>
+الفقه المالكي
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+باب البيوع.
+</div>
+
+<div class="lesson">
+بيع الجزاف.
+</div>
+
+<div class="lesson">
+باب الربا كاملًا.
+</div>
+
+<div class="lesson">
+الفضل وما يتعلق بذلك.
+</div>
+
+<div class="lesson">
+فصل في الخيار.
+</div>
+
+<div class="lesson">
+فصل: حكم بيع المرابحة وبيان حقيقتها.
+</div>
+
+<div class="lesson">
+فصل في السلم.
+</div>
+
+<div class="lesson">
+فصل في القرض.
+</div>
+
+<div class="lesson">
+فصل في الرهن.
+</div>
+
+<div class="lesson">
+أحكام الصلح.
+</div>
+
+<div class="lesson">
+الحوالة وأحكامها.
+</div>
+
+<div class="lesson">
+الضمان وأحكامه.
+</div>
+
+<div class="lesson">
+الشركة وأحكامها.
+</div>
+
+<div class="lesson">
+المزارعة وأحكامها.
+</div>
+
+<div class="lesson">
+الوكالة وأحكامها.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     04 التفسير
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">04</span>
+التفسير
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="note">
+<strong>📘 المقرر: 5 سور فقط.</strong>
+</div>
+
+<div class="lesson">
+سورة تبارك
+</div>
+
+<div class="lesson">
+سورة القلم
+</div>
+
+<div class="lesson">
+سورة الحاقة
+</div>
+
+<div class="lesson">
+سورة المعارج
+</div>
+
+<div class="lesson">
+سورة نوح
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     05 الحديث
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">05</span>
+الحديث
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="note">
+<strong>📖 عدد الأحاديث المقررة: 16 حديثًا.</strong>
+</div>
+
+<div class="lesson">
+الحديث الأول: سعة فضل الله تعالى.
+</div>
+
+<div class="lesson">
+الحديث الثاني: مأمورات ومنهيات نبوية.
+</div>
+
+<div class="lesson">
+الحديث الثالث: تحريم هجر المسلم.
+</div>
+
+<div class="lesson">
+الحديث الرابع: الأنبياء إخوة لِعَلَّات.
+</div>
+
+<div class="lesson">
+الحديث الخامس: الرؤيا الصالحة.
+</div>
+
+<div class="lesson">
+الحديث السادس: إثم من قتل معاهداً.
+</div>
+
+<div class="lesson">
+الحديث السابع: الصدقة من الكسب الحلال الطيب.
+</div>
+
+<div class="lesson">
+الحديث الثامن: التحري في كسب اللقمة الحلال.
+</div>
+
+<div class="lesson">
+الحديث التاسع: فضل الصحابة رضي الله عنهم.
+</div>
+
+<div class="lesson">
+الحديث العاشر: المنافسة في فعل الخير.
+</div>
+
+<div class="lesson">
+الحديث الحادي عشر: أجر الساعي على الأرملة والمسكين.
+</div>
+
+<div class="lesson">
+الحديث الثاني عشر: أجر الصبر على البلاء.
+</div>
+
+<div class="lesson">
+الحديث الثالث عشر: التحذير من قول الزور.
+</div>
+
+<div class="lesson">
+الحديث الرابع عشر: يسر الإسلام وسماحته.
+</div>
+
+<div class="lesson">
+الحديث الخامس عشر: النهي عن تمني الموت لضرر دنيوي.
+</div>
+
+<div class="lesson">
+الحديث السادس عشر: من الكبائر شتم الرجل والديه.
+</div>
+
+<div class="note">
+<strong>📌 الحفظ:</strong>
+الأحاديث (1، 5، 7، 10، 14).
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     06 التوحيد
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">06</span>
+التوحيد
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+خلق أفعال العباد
+</div>
+
+<div class="lesson">
+التوفيق والخذلان
+</div>
+
+<div class="lesson">
+الوعد والوعيد
+</div>
+
+<div class="lesson">
+السعادة والشقاوة
+</div>
+
+<div class="lesson">
+الصلاح والأصلح
+</div>
+
+<div class="lesson">
+القضاء والقدر
+</div>
+
+<div class="lesson">
+رؤية الله تعالى
+</div>
+
+<div class="lesson">
+قسم النبوات
+</div>
+
+<div class="note">
+<strong>📌 الدرس مقرر بالكامل.</strong>
+</div>
+
+<div class="lesson">
+ما يجب وما يستحيل في حق الرسل: الأمانة.
+</div>
+
+<div class="note">
+<strong>📌 الدرس مقرر بالكامل.</strong>
+</div>
+
+<div class="note">
+📝 <strong>ملحوظة:</strong>
+الصدق، والفطانة، والكذب، والخيانة، وبقية الواجبات والمستحيلات
+في حق الرسل ستكون ضمن مقرر الترم الثاني إن شاء الله.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     07 الفرق الإسلامية
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">07</span>
+الفرق الإسلامية
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+نشأة الفرق الإسلامية.
+</div>
+
+<div class="lesson">
+المعتزلة.
+</div>
+
+<div class="note">
+<strong>📌 الدرس مقرر بالكامل.</strong>
+</div>
+
+<div class="lesson">
+أهل السنة والجماعة.
+</div>
+
+<div class="lesson">
+أبو الحسن الأشعري.
+</div>
+
+<div class="lesson">
+أبو منصور الماتريدي.
+</div>
+
+<div class="lesson">
+الخوارج.
+</div>
+
+<div class="lesson">
+الإباضية.
+</div>
+
+<div class="lesson">
+المرجئة.
+</div>
+
+<div class="lesson">
+الجبرية (الجهمية).
+</div>
+
+<div class="lesson">
+القدرية الأولى.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     08 النحو
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">08</span>
+النحو
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+باب الفاعل.
+</div>
+
+<div class="lesson">
+باب نائب الفاعل.
+</div>
+
+<div class="lesson">
+باب المفعول المطلق.
+</div>
+
+<div class="lesson">
+باب المفعول له.
+</div>
+
+<div class="lesson">
+باب المفعول فيه.
+</div>
+
+<div class="lesson">
+باب المفعول معه.
+</div>
+
+<div class="lesson">
+باب الاستثناء.
+</div>
+
+<div class="lesson">
+باب الحال.
+</div>
+
+<div class="lesson">
+باب التمييز.
+</div>
+
+<div class="note">
+😂 <strong>بُشرى سارة... أو يمكن مش سارة أوي!</strong>
+<br><br>
+لو افتكرت إن كلمة "باب" معناها درس واحد صغير...
+الباب في النحو ممكن تلاقيه ٥ أو ٦ دروس،
+وأحيانًا يوصل لـ ١٠ دروس! 😅
+<br><br>
+يعني المنهج مش كبير... ده "عامل عضوية جيم" من كتر ما هو مليان! 💪😂
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     09 الصرف
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">09</span>
+الصرف
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+تقسيم الاسم إلى مجرد ومزيد.
+</div>
+
+<div class="lesson">
+أبنية الاسم المجرد.
+</div>
+
+<div class="lesson">
+أبنية الاسم الرباعي المجرد.
+</div>
+
+<div class="lesson">
+أبنية الاسم الخماسي المجرد.
+</div>
+
+<div class="lesson">
+أبنية المزيد من الأسماء.
+</div>
+
+<div class="lesson">
+تقسيم الاسم إلى جامد ومشتق.
+</div>
+
+<div class="lesson">
+أبنية المصادر.
+</div>
+
+<div class="lesson">
+المصدر الميمي.
+</div>
+
+<div class="lesson">
+اسم المرة واسم الهيئة.
+</div>
+
+<div class="lesson">
+المصدر الصناعي.
+</div>
+
+<div class="lesson">
+المشتقات – اسم الفاعل.
+</div>
+
+<div class="lesson">
+صيغ المبالغة.
+</div>
+
+<div class="lesson">
+اسم المفعول.
+</div>
+
+<div class="lesson">
+الصفة المشبهة.
+</div>
+
+<div class="lesson">
+اسم التفضيل.
+</div>
+
+<div class="lesson">
+اسما الزمان والمكان.
+</div>
+
+<div class="lesson">
+اسم الآلة.
+</div>
+
+<div class="note">
+<strong>📌 مقرر الأدبي المنهج كامل.</strong>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     10 البلاغة
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">10</span>
+البلاغة
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="unit-title">
+الوحدة الأولى: القصر
+</div>
+
+<div class="lesson">
+القصر: تعريفه، وأركانه، وطرقه.
+</div>
+
+<div class="lesson">
+أقسام القصر.
+</div>
+
+<div class="unit-title">
+الوحدة الثانية: الأساليب الإنشائية
+</div>
+
+<div class="lesson">
+الإنشاء: تعريفه، وأساليبه.
+</div>
+
+<div class="lesson">
+التمني.
+</div>
+
+<div class="lesson">
+الاستفهام.
+</div>
+
+<div class="lesson">
+الأمر.
+</div>
+
+<div class="lesson">
+النهي.
+</div>
+
+<div class="lesson">
+النداء.
+</div>
+
+<div class="unit-title">
+الوحدة الثالثة: الفصل والوصل
+</div>
+
+<div class="lesson">
+الفصل والوصل: مفاهيم وأسس.
+</div>
+
+<div class="lesson">
+مواطن الفصل بين الجمل.
+</div>
+
+<div class="lesson">
+مواطن الوصل بين الجمل.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     11 الأدب
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">11</span>
+الأدب
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+ملامح الحياة في العصر العباسي.
+</div>
+
+<div class="lesson">
+الشعر في العصر العباسي.
+</div>
+
+<div class="note">
+📌 ومقرر عليك أيضًا: أهم خصائص الشعر.
+</div>
+
+<div class="lesson">
+أهم شعراء العصر العباسي.
+</div>
+
+<div class="lesson">
+النثر في العصر العباسي.
+</div>
+
+<div class="note">
+📌 ومقرر عليك أيضًا: أهم خصائص النثر.
+</div>
+
+<div class="lesson">
+ملامح الحياة في العصر المملوكي.
+</div>
+
+<div class="lesson">
+الشعر في العصر المملوكي.
+</div>
+
+<div class="note">
+📌 ومقرر عليك أيضًا: أهم خصائص الشعر.
+</div>
+
+<div class="lesson">
+أهم شعراء العصر المملوكي.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     12 النصوص
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">12</span>
+النصوص
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="lesson">
+في الرثاء لأبي تمام.
+</div>
+
+<div class="note">
+📌 النص كله دراسة وحفظ.
+</div>
+
+<div class="lesson">
+في الاستعطاف للمتنبي.
+</div>
+
+<div class="note">
+📌 النص كله دراسة، وحفظ أول 8 أبيات منه.
+</div>
+
+<div class="lesson">
+خطبة عيد الفطر للخليفة المأمون.
+</div>
+
+<div class="note">
+📌 الخطبة كلها دراسة وحفظ.
+</div>
+
+<div class="lesson">
+في المديح والحكم لصفي الدين الحلي.
+</div>
+
+<div class="note">
+📌 النص كله دراسة وحفظ.
+</div>
+
+<div class="lesson">
+من لامية ابن الوردي في الحكم والمواعظ.
+</div>
+
+<div class="note">
+📌 النص كله دراسة، بدون حفظ.
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     13 المطالعة والإنشاء
+========================= -->
+
+<div class="subject">
+
+<button class="subject-title">
+
+<span class="title-right">
+<span class="subject-number">13</span>
+المطالعة والإنشاء
+</span>
+
+<span class="arrow">⌄</span>
+
+</button>
+
+<div class="lessons">
+
+<div class="lessons-inner">
+
+<div class="note">
+📌 منهج المطالعة والإنشاء موحد للقسمين العلمي والأدبي.
+</div>
+
+<div class="unit-title">
+أولًا: المطالعة
+</div>
+
+<div class="lesson">
+بلاغة القرآن الكريم.
+</div>
+
+<div class="lesson">
+نصيحة أبي حازم سليمان بن عبد الملك.
+</div>
+
+<div class="lesson">
+أصل اللغة (إلهام أم اصطلاح).
+</div>
+
+<div class="lesson">
+المرأة الكريمة.
+</div>
+
+<div class="lesson">
+البطولة والأبطال.
+</div>
+
+<div class="lesson">
+من الشيوخ إلى الشبان.
+</div>
+
+<div class="unit-title">
+ثانيًا: الإنشاء
+</div>
+
+<div class="lesson">
+الإنشاء.
+</div>
+
+<div class="lesson">
+المناظرة.
+</div>
+
+<div class="lesson">
+فن الخطابة.
+</div>
+
+</div>
+</div>
+</div>
+
+</section>
+
+
+<!-- =========================
+     Footer
+========================= -->
+
+<footer>
+
+<div class="designer">
+✒️ Designer:
+<strong>Abdulkhaliq</strong>
+</div>
+
+<div class="copyright">
+
+© جميع الحقوق محفوظة لقناة
+<strong>علملوجيا</strong>
+
+<br>
+
+<a
+    href="https://t.me/elmologia"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+https://t.me/elmologia
+</a>
+
+</div>
+
+</footer>
+
+</main>
+
+
+<script>
+
+/* =========================
+   زر تم
+========================= */
+
+function startWebsite(){
+
+    const welcome =
+        document.getElementById("welcome");
+
+    welcome.style.opacity="0";
+
+    setTimeout(function(){
+
+        welcome.style.display="none";
+
+    },400);
+}
+
+
+/* =========================
+   النجوم
+========================= */
+
+const background =
+    document.getElementById("background");
+
+for(let i=0;i<45;i++){
+
+    const star =
+        document.createElement("div");
+
+    star.className="star";
+
+    star.style.left =
+        Math.random()*100+"%";
+
+    star.style.animationDuration =
+        (5+Math.random()*10)+"s";
+
+    star.style.animationDelay =
+        Math.random()*8+"s";
+
+    const size =
+        2+Math.random()*4;
+
+    star.style.width=size+"px";
+    star.style.height=size+"px";
+
+    background.appendChild(star);
+}
+
+
+/* =========================
+   الأشكال الطافية
+========================= */
+
+for(let i=0;i<15;i++){
+
+    const shape =
+        document.createElement("div");
+
+    shape.className =
+        "shape "+
+        (Math.random()>.5
+        ?"circle"
+        :"square");
+
+    const size =
+        10+Math.random()*25;
+
+    shape.style.width=size+"px";
+    shape.style.height=size+"px";
+
+    shape.style.left =
+        Math.random()*100+"%";
+
+    shape.style.top =
+        Math.random()*100+"%";
+
+    shape.style.animationDuration =
+        (5+Math.random()*8)+"s";
+
+    shape.style.animationDelay =
+        Math.random()*5+"s";
+
+    background.appendChild(shape);
+}
+
+
+/* =========================
+   فتح وإغلاق المواد
+========================= */
+
+document
+.querySelectorAll(".subject-title")
+.forEach(function(button){
+
+    button.addEventListener("click",function(){
+
+        const subject =
+            button.parentElement;
+
+        const lessons =
+            subject.querySelector(".lessons");
+
+
+        document
+        .querySelectorAll(".subject.open")
+        .forEach(function(other){
+
+            if(other!==subject){
+
+                other.classList.remove("open");
+
+                other
+                .querySelector(".lessons")
+                .style.maxHeight=null;
+
+            }
+
+        });
+
+
+        subject.classList.toggle("open");
+
+
+        if(subject.classList.contains("open")){
+
+            lessons.style.maxHeight =
+                lessons.scrollHeight+"px";
+
+        }else{
+
+            lessons.style.maxHeight=null;
+
+        }
+
+    });
+
+});
+
+
+/* =========================
+   تبديل علمي / أدبي
+========================= */
+
+function showBranch(branch,button){
+
+    document
+    .getElementById("scientific")
+    .classList.add("hidden");
+
+    document
+    .getElementById("literary")
+    .classList.add("hidden");
+
+
+    document
+    .getElementById(branch)
+    .classList.remove("hidden");
+
+
+    document
+    .querySelectorAll(".branch-btn")
+    .forEach(function(btn){
+
+        btn.classList.remove("active");
+
+    });
+
+
+    button.classList.add("active");
+
+
+    window.scrollTo({
+
+        top:0,
+        behavior:"smooth"
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
